@@ -137,6 +137,27 @@
                                   }
                                 );
 
+### middleware mongoose :
+                    
+pre :
+                               productSchema.pre('save', function (next) {
+ 
+                                    if (this.quantity == 0) {
+                                      this.status = "out-of-stock";
+                                    }
+                                    next();
+                                  });
+                                  
+                                  
+post :             
+          
+                                  productSchema.post("save", function (doc, next) {
+                                  
+                                    console.log("before");
+                                    next();
+                                  });
 
+model : 
 
                             const Product = mongoose.model("Product", productSchema);
+                            

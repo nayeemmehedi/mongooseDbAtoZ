@@ -73,3 +73,7 @@
                                 }
 
                               });
+                  
+   jj bad dete chai               
+                  
+     const result = await Brand.find({}).select("-products -suppliers")

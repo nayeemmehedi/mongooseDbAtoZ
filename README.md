@@ -1,28 +1,22 @@
-### mongoose db connections
-
-app.js
-.........
-
-                      const express = require("express");
-                      const cors = require("cors");
-                      const mongoose = require("mongoose");
-                      const Product = require("./model/Product.model");
-                      const {routerProduct,routerProduct1} = require("./routes/product.routes");
+#### post many
 
 
 
-                      const app = express();
-                      app.use(cors());
-                      app.use(express.json());
-                      app.use("/api/v1/product",routerProduct)
-                      app.use("/api/v1/fileUpload",routerProduct1)
+            module.exports.productControllerPostMany =async (req, res) => {
 
+            try {
 
-                      mongoose.set("strictQuery", true);
+              const result = await Product.insertMany(req.body, { runValidators: true });
 
-                      mongoose
-                        .connect(process.env.DATABASE_FILE || "mongodb://localhost:27017/mongoose1st")
-                        .then(() => console.log("db conntected.."));
+              res.status(200).send({
+                status: "success",
+                message: result,
+              });
+            } catch (error) {
+              res.status(400).send({
+                status: "failed",
+                message: error.message,
+              });
+            }
 
-
-app.listen(3000);
+          };

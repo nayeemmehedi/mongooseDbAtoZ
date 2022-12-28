@@ -10,8 +10,8 @@
 
                         //save
                         /**
-                         *   const product = new Product(req.body);
-                             const result = await product.save();
+                         *   const value = new Product(req.body);
+                             const result = await value.save();
 
                         */
 

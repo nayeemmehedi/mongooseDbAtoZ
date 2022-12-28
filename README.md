@@ -1,28 +1,25 @@
-### mongoose db connections
+       #### router basic : 
+       
+                  const express = require("express")
+                  const { productControllerGet,productControllerPost, productControllerGetbyId, productControllerPostMany, productControllerPatchbyId } =                                  require("../controller/product.controller")
 
-app.js
-.........
+                  const productRoute = express.Router()
 
-                      const express = require("express");
-                      const cors = require("cors");
-                      const mongoose = require("mongoose");
-                      const Product = require("./model/Product.model");
-                      const {routerProduct,routerProduct1} = require("./routes/product.routes");
-
-
-
-                      const app = express();
-                      app.use(cors());
-                      app.use(express.json());
-                      app.use("/api/v1/product",routerProduct)
-                      app.use("/api/v1/fileUpload",routerProduct1)
+                  productRoute.route("/")
+                                  .get(productControllerGet)
+                                  .post(productControllerPost)
 
 
-                      mongoose.set("strictQuery", true);
 
-                      mongoose
-                        .connect(process.env.DATABASE_FILE || "mongodb://localhost:27017/mongoose1st")
-                        .then(() => console.log("db conntected.."));
+                  productRoute.route("/many")
+                                 .post(productControllerPostMany)
 
 
-app.listen(3000);
+
+
+                  productRoute.route("/:id")
+                                  .get(productControllerGetbyId)
+                                  .patch(productControllerPatchbyId)
+
+
+                  module.exports = productRoute

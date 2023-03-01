@@ -1,28 +1,36 @@
-### mongoose db connections
+### Query and Projection Operators
 
-app.js
-.........
+## Comparison  1st 
 
-                      const express = require("express");
-                      const cors = require("cors");
-                      const mongoose = require("mongoose");
-                      const Product = require("./model/Product.model");
-                      const {routerProduct,routerProduct1} = require("./routes/product.routes");
+        eq ->  value equal or not
 
+        ne -> value not equal
 
+        in -> array r vtr value ase ki na 
 
-                      const app = express();
-                      app.use(cors());
-                      app.use(express.json());
-                      app.use("/api/v1/product",routerProduct)
-                      app.use("/api/v1/fileUpload",routerProduct1)
+        nin -> array r vtr value nai na ki 
+  
+  
+  ## Comparison 2nd 
+  
+  
+        gt - greater then
 
+        gte - greater then equal
 
-                      mongoose.set("strictQuery", true);
+        lt - less then
 
-                      mongoose
-                        .connect(process.env.DATABASE_FILE || "mongodb://localhost:27017/mongoose1st")
-                        .then(() => console.log("db conntected.."));
+        lte - less then equal
+  
+  
+  ## Logical
+  
+        and 
 
+        or
 
-app.listen(3000);
+        not 
+
+        nor
+  
+  

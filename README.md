@@ -1,28 +1,21 @@
-### mongoose db connections
+### Schema 
 
-app.js
-.........
+`Type` : Specifies the data type of the field. Mongoose supports various data types, such as String, Number, Date, Boolean, etc.
 
-                      const express = require("express");
-                      const cors = require("cors");
-                      const mongoose = require("mongoose");
-                      const Product = require("./model/Product.model");
-                      const {routerProduct,routerProduct1} = require("./routes/product.routes");
+`Required` : Specifies whether the field is required or not. If this property is set to true, then the field must have a value before the document can be saved.
 
+`Default` : Specifies the default value of the field. If the field is not provided with a value, then the default value is used.
 
+`Unique` : Specifies whether the field value should be unique across all documents in the collection. If this property is set to true, then Mongoose will create a unique index on the field.
 
-                      const app = express();
-                      app.use(cors());
-                      app.use(express.json());
-                      app.use("/api/v1/product",routerProduct)
-                      app.use("/api/v1/fileUpload",routerProduct1)
+`Validate` : Specifies a custom validation function for the field. The validation function takes a value as input and returns true if the value is valid, or false otherwise.
 
+`Enum` : Specifies an array of allowed values for the field. If this property is set, then the field value must be one of the allowed values.
 
-                      mongoose.set("strictQuery", true);
+`Min/Max` : Specifies the minimum or maximum value for a number field.
 
-                      mongoose
-                        .connect(process.env.DATABASE_FILE || "mongodb://localhost:27017/mongoose1st")
-                        .then(() => console.log("db conntected.."));
+`Trim` : Specifies whether Mongoose should trim whitespace from the beginning and end of a string field.
 
+`Lowercase/Uppercase`  : Specifies whether Mongoose should convert the string field to lowercase or uppercase.
 
-app.listen(3000);
+`Ref`: Specifies a reference to another model. This property is used for defining relationships between models in Mongoose.

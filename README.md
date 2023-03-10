@@ -53,7 +53,7 @@
 
           min : [30, must be less then 30]
           
- 8. MinLength/MaxLength : Specifies the minimum or maximum value for a string field. :writing_hand:
+ 8. `MinLength/MaxLength` : Specifies the minimum or maximum value for a string field. :writing_hand:
  
          minLength : [30, must be less then 30 charector]
 
@@ -64,7 +64,30 @@
         
     age piche space thkle kete dbe
 
-10. `Lowercase/Uppercase`  : Specifies whether Mongoose should convert the string field to lowercase or uppercase. :writing_hand:
+
+
+10. `Ref`: Specifies a reference to another model. This property is used for defining relationships between models in Mongoose. :writing_hand:
+
+            supplier : {
+            
+               type : mongoose.Schema.Types.ObjectId , 
+               ref : "Supplier"
+            
+            }
+
+
+11 . `timeStamps` : true
+
+
+12 .  `Match` : 
+
+                 match: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/
+                 
+                 match: [/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/, 'Invalid email format']
+                 
+
+
+13. `Lowercase/Uppercase`  : Specifies whether Mongoose should convert the string field to lowercase or uppercase. :writing_hand:
 
     uppercase :duck:
     
@@ -108,19 +131,6 @@
 
      
       
-
-12. `Ref`: Specifies a reference to another model. This property is used for defining relationships between models in Mongoose. :writing_hand:
-
-            supplier : {
-            
-               type : mongoose.Schema.Types.ObjectId , 
-               ref : "Supplier"
-            
-            }
-
-
-13 . `timeStamps` : true
-
 
 ########################
 

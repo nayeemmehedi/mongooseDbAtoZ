@@ -85,6 +85,29 @@
                  
                  match: [/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/, 'Invalid email format']
                  
+                 
+13. `expiresAt` :  auto matic delete doc to set time
+
+         const mongoose = require('mongoose');
+
+          const sessionSchema = new mongoose.Schema({
+            user_id: {
+              type: mongoose.Schema.Types.ObjectId,
+              required: true,
+              ref: 'User'
+            },
+            expiresAt: {
+              type: Date,
+              default: Date.now,
+              index: { expires: '1d' }
+            }
+          });
+
+          const Session = mongoose.model('Session', sessionSchema);
+
+          module.exports = Session;
+
+                 
 
 
 13. `Lowercase/Uppercase`  : Specifies whether Mongoose should convert the string field to lowercase or uppercase. :writing_hand:
